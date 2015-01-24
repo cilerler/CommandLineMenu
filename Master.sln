@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.22512.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Menu", "MenuSystem\Menu.csproj", "{432E851B-AF2A-4844-986D-A9A96C0025B1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Menu", "Menu\Menu.csproj", "{432E851B-AF2A-4844-986D-A9A96C0025B1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Menu.Sample", "MenuSystem.Sample\Menu.Sample.csproj", "{2E019C46-FD2A-4991-A79F-57DA429EB6C2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Menu.Sample", "Menu.Sample\Menu.Sample.csproj", "{2E019C46-FD2A-4991-A79F-57DA429EB6C2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -30,11 +30,11 @@ Global
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs36
 		SccLocalPath0 = .
-		SccProjectUniqueName1 = MenuSystem.Sample\\Menu.Sample.csproj
-		SccProjectName1 = MenuSystem.Sample
-		SccLocalPath1 = MenuSystem.Sample
-		SccProjectUniqueName2 = MenuSystem\\Menu.csproj
-		SccProjectName2 = MenuSystem
-		SccLocalPath2 = MenuSystem
+		SccProjectUniqueName1 = Menu.Sample\\Menu.Sample.csproj
+		SccProjectName1 = Menu.Sample
+		SccLocalPath1 = Menu.Sample
+		SccProjectUniqueName2 = Menu\\Menu.csproj
+		SccProjectName2 = Menu
+		SccLocalPath2 = Menu
 	EndGlobalSection
 EndGlobal

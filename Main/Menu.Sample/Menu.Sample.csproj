@@ -48,7 +48,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MenuSystem\Menu.csproj">
+    <ProjectReference Include="..\Menu\Menu.csproj">
       <Project>{432E851B-AF2A-4844-986D-A9A96C0025B1}</Project>
       <Name>Menu</Name>
     </ProjectReference>

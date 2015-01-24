@@ -1,32 +1,23 @@
 ﻿using System;
+using System.ComponentModel;
 
-namespace MenuSystem.Sample
+namespace Menu.Sample
 {
     class Program
     {
-        /// <code>
-        /// static void Main()
-        /// {
-        ///     var menu = new MenuSystem.MenuDrivenApplication("Hello Menu");
-        ///     menu.Add(HelloWorld);
-        ///     menu.Run();
-        /// }
-        ///
-        /// static void HelloWorld()
-        /// {
-        ///     Console.WriteLine("Hello");
-        /// }
-        /// </code>
         static void Main(string[] args)
         {
-            var menu = new MenuSystem.MenuDrivenApplication("Hello Menu");
-            menu.Add(HelloWorld);
+            var menu = new MenuCollection("Hello Menu", false)
+                       {
+                           HelloWorld
+                       };
             menu.Run();
         }
 
+        [Description("Hello World Menu Item")]
         private static void HelloWorld()
         {
-            Console.WriteLine("Hello");
+            Console.WriteLine(@"Hello");
         }
     }
 }

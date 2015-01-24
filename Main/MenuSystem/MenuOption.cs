@@ -1,70 +1,66 @@
-﻿//===============================================================================
-// Microsoft patterns & practices
-// Unity Application Block
-//===============================================================================
-// Copyright © Microsoft Corporation.  All rights reserved.
-// THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY
-// OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT
-// LIMITED TO THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
-// FITNESS FOR A PARTICULAR PURPOSE.
-//===============================================================================
+﻿using System;
+using Menu.Properties;
 
-using System;
-
-namespace MenuSystem
+namespace Menu
 {
     /// <summary>
-    /// A class that encapsulates the behavior of a single menu item,
-    /// and is responsible for 
+    ///     A class that encapsulates the behavior of a single menu item,
+    ///     and is responsible for
     /// </summary>
     public abstract class MenuOption
     {
-        /// <summary>
-        /// Text to display in the menu.
-        /// </summary>
-        public abstract string Text { get; }
+        internal static readonly string Underline = new string('-', 79);
 
         /// <summary>
-        /// Execute the menu option
+        ///     Text to display in the menu.
         /// </summary>
-        public void Execute()
+        internal abstract string Text { get; }
+
+        /// <summary>
+        ///     Execute the menu option
+        /// </summary>
+        internal void Execute(bool throwError)
         {
             WriteExampleHeader();
             try
             {
                 DoExecute();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
+                if (throwError)
+                {
+                    throw;
+                }
                 ShowExceptionDetails(ex);
             }
         }
 
         /// <summary>
-        /// Execute the actual operation.
+        ///     Execute the actual operation.
         /// </summary>
         protected abstract void DoExecute();
 
         private void WriteExampleHeader()
         {
-            Console.WriteLine(MenuDrivenApplication.Underline);
+            Console.WriteLine(Underline);
             Console.WriteLine(Text);
-            Console.WriteLine(MenuDrivenApplication.Underline);
+            Console.WriteLine(Underline);
         }
 
-        public static void ShowExceptionDetails(Exception ex)
+        private static void ShowExceptionDetails(Exception ex)
         {
-            Console.WriteLine("Exception type {0} was thrown.", ex.GetType().ToString());
-            Console.WriteLine("Message: '{0}'", ex.Message);
-            Console.WriteLine("Source: '{0}'", ex.Source);
+            Console.WriteLine(Resources.MenuOption_ShowExceptionDetails_ExceptionType, ex.GetType());
+            Console.WriteLine(Resources.MenuOption_ShowExceptionDetails_Message, ex.Message);
+            Console.WriteLine(Resources.MenuOption_ShowExceptionDetails_Source, ex.Source);
             if (null == ex.InnerException)
             {
-                Console.WriteLine("No Inner Exception");
+                Console.WriteLine(Resources.MenuOption_ShowExceptionDetails_NoInnerException);
             }
             else
             {
                 Console.WriteLine();
-                Console.WriteLine("Inner Exception: {0}", ex.InnerException.ToString());
+                Console.WriteLine(Resources.MenuOption_ShowExceptionDetails_InnerException, ex.InnerException);
             }
             Console.WriteLine();
         }

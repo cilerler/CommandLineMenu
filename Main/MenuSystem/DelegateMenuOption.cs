@@ -1,57 +1,35 @@
-﻿//===============================================================================
-// Microsoft patterns & practices
-// Unity Application Block
-//===============================================================================
-// Copyright © Microsoft Corporation.  All rights reserved.
-// THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY
-// OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT
-// LIMITED TO THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
-// FITNESS FOR A PARTICULAR PURPOSE.
-//===============================================================================
-
-using System;
+﻿using System;
 using System.ComponentModel;
 using System.Linq;
+using Menu.Properties;
 
-namespace MenuSystem
+namespace Menu
 {
-    internal class DelegateMenuOption : MenuOption
+    internal sealed class DelegateMenuOption : MenuOption
     {
-        private readonly Action optionCode;
-        private readonly string optionText;
+        private readonly Action _optionCode;
 
-        public DelegateMenuOption(Action optionCode)
+        internal DelegateMenuOption(Action optionCode)
         {
-            this.optionCode = optionCode;
-            optionText = GetDescriptionFromOptionCodeDelegate();
+            _optionCode = optionCode;
+            Text = GetDescriptionFromOptionCodeDelegate();
         }
 
-        public override string Text
-        {
-            get { return optionText; }
-        }
+        internal override string Text { get; }
 
         protected override void DoExecute()
         {
-            optionCode();
+            _optionCode();
         }
 
-        /// <summary>
-        /// Pull the description off attributes on the delegate passed in.
-        /// This only works if you pass in actual methods, but that's ok
-        /// for our purposes.
-        /// </summary>
-        /// <returns>Description text to display.</returns>
         private string GetDescriptionFromOptionCodeDelegate()
         {
-            DescriptionAttribute description =
-                optionCode.Method.GetCustomAttributes(typeof (DescriptionAttribute), false)
-                    .Cast<DescriptionAttribute>().FirstOrDefault();
-            if (description == null)
-            {
-                return "No description present";
-            }
-            return description.Description;
+            DescriptionAttribute description = _optionCode.Method.GetCustomAttributes(typeof (DescriptionAttribute), false)
+                                                          .Cast<DescriptionAttribute>()
+                                                          .FirstOrDefault();
+            return description == null
+                       ? Resources.DelegateMenuOption_GetDescriptionFromOptionCodeDelegate_NoDescription
+                       : description.Description;
         }
     }
 }

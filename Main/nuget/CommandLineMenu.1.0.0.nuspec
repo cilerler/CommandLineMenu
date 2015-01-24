@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <metadata>
+        <id>CommandLineMenu</id>
+        <version>1.0.0</version>
+        <authors>Cengiz Ilerler</authors>
+        <owners>cilerler</owners>
+        <licenseUrl>https://commandlinemenu.codeplex.com/license</licenseUrl>
+        <projectUrl>https://commandlinemenu.codeplex.com</projectUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Simple menu handler for console applications. Forked from Microsoft Patterns Practices Unity Application Block Samples</description>
+        <tags>command line menu</tags>
+    </metadata>
+    <files>
+        <file src="..\MenuSystem\bin\Release\CommandLineMenu.dll" target="lib\net40\CommandLineMenu.dll" />
+    </files>
+</package>
